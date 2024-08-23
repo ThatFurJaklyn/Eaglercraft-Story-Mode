@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minecraft: Story Mode</title>
+<style>
+    
+	 /* Define the custom font */
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('fonts/font.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+  
+  body {
+     /* Set background image */
+    background-image: url('background.png');
+            /* Center and scale the background image */
+    background-position: center;
+    background-size: cover;
+            /* Fix the background image while scrolling */
+    background-attachment: fixed;
+            /* Add some padding to the top for content */
+    padding-top: 50px; /* Adjust as needed */
+ /* Optional: Add a background color in case image is not fully visible */
+    background-color: #f2f2f2;
+	 font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 50px; /* Adjust as needed */
+    position: relative;
+  }
+  #logo {
+    position: absolute;
+    top: 10px; /* Adjust to your preference */
+    left: 10px; /* Adjust to your preference */
+    width: 478px; /* Width of the logo */
+    z-index: 100; /* Ensure it's above other elements */
+  }
+  #fullscreenButton {
+	 position: fixed;
+    left: 21px; /* Adjust to move away from the edge */
+    top: 50%; /* Vertically center */
+    transform: translateY(-50%); /* Vertically center */
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    width: 480px; /* Adjust as needed */
+    height: 59.5px; /* Adjust as needed */
+    background-image: url('play.png'); /* Replace with your play button image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    z-index: 10; /* Ensure it's below the logo */
+  }
+  #exitButton {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 10px; /* Adjust to your preference */
+    right: 10px; /* Adjust to your preference */
+    width: 30px; /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+    background-image: url('exit.png'); /* Replace with your exit button image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above other elements */
+  }
+  #videoContainer {
+    display: none; /* Hidden initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    z-index: 100; /* Ensure it's above other content */
+  }
+  .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (iframe height / iframe width) */
+    height: 0;
+  }
+  .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+   .button-container {
+    position: fixed;
+    bottom: 50px;
+    left: 10px;
+  }
+
+  .button img {
+    margin-left: 0px;
+    height: 100px; /* Adjust as needed */
+  }
+     .button {
+            background-image: url('netflix.jpg'); /* Path to your texture file */
+            background-size: cover; /* Adjusts the background image to cover the button */
+            border: none;
+            color: white;
+            padding: 0px 0px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0px;
+            margin: 0px 0px;
+            cursor: pointer;
+            border-radius: 0px;
+            transition: background-color 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent color to ensure text visibility */
+        }
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.7); /* Slightly lighter on hover */
+        }
+		  
+</style>
+</head>
+<body>
+
+<div class="button-container">
+  <button class="button">
+    <img src="netflix.jpg" alt="Icon">
+  </button>
+</div>
+
+  <img id="logo" src="logo.png" alt="Logo">
+  <button id="fullscreenButton" onclick="openFullscreenVideo()"></button>
+
+  <!-- Exit button for stopping the video -->
+  <button id="exitButton" onclick="exitFullscreenVideo()"></button>
+
+  <!-- Hidden video container -->
+  <div id="videoContainer">
+    <div class="videoWrapper">
+      <!-- Replace 'VIDEO_ID' with your YouTube video ID -->
+      <iframe id="youtubeIframe" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+    var videoContainer = document.getElementById('videoContainer');
+    var exitButton = document.getElementById('exitButton');
+    var youtubeIframe = document.getElementById('youtubeIframe');
+
+    // Function to open fullscreen YouTube video
+    function openFullscreenVideo() {
+      // Replace 'VIDEO_ID' with your YouTube video ID
+      var videoId = 'tW7a4n-AddA';
+      var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+
+      // Set iframe source and display video container
+      youtubeIframe.src = embedUrl;
+      videoContainer.style.display = 'block';
+      exitButton.style.display = 'block';
+    }
+
+    // Function to exit fullscreen video and stop it
+    function exitFullscreenVideo() {
+      // Pause the video and hide video container
+      youtubeIframe.src = '';
+      videoContainer.style.display = 'none';
+      exitButton.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
