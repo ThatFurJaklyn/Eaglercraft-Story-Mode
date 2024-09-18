@@ -1,3 +1,8 @@
+# Eaglercraft Story Mode
+
+I updated the thing so its the INTERACTIVE version. You can actually play!!
+
+Original:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Check out MCSM: The Netflix Archive!
 This uses season one footage of mcsm from youtube. 
